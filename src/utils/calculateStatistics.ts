@@ -23,9 +23,11 @@ export const calculateStatistics = (text: string): Statistics => {
     }
   })
 
+  const averageWordLength = totalWords > 0 ? words.reduce((acc, word) => acc + word.length, 0) / totalWords : 0
+
   return {
     totalWords,
-    averageWordLength: 0, // Placeholder, will be implemented later
+    averageWordLength,
     mostFrequentLength,
     wordLengthCounts,
   }
