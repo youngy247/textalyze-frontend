@@ -1,16 +1,19 @@
+import { useState } from 'react'
 import './App.css'
+import TextInput from './components/TextInput/TextInput'
+import StatisticsDisplay from './components/StatisticsDisplay/StatisticsDisplay'
+import { calculateStatistics } from './utils/calculateStatistics'
 
 function App(): JSX.Element {
+  const [text, setText] = useState<string>('')
+
+  const statistics = calculateStatistics(text)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <h1>Text Statistics</h1>
+      <TextInput text={text} setText={setText} />
+      <StatisticsDisplay statistics={statistics} />
     </div>
   )
 }
